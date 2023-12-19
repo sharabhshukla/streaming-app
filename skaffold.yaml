@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: fastapistream
+build:
+  artifacts:
+    - image: backend-worker-image
+      context: backend
+      docker:
+        dockerfile: Dockerfile
+    - image: frontend-api-image
+      context: frontend
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - k8s/*.yaml
