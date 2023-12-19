@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-worker
+  labels:
+    app: backend-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-worker
+  template:
+    metadata:
+      name: backend-worker
+      labels:
+        app: backend-worker
+    spec:
+      containers:
+        - name: backend-worker
+          image: backend-worker-image
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      

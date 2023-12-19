@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-api
+  labels:
+    app: frontend-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-api
+  template:
+    metadata:
+      name: frontend-api
+      labels:
+        app: frontend-api
+    spec:
+      containers:
+        - name: frontend-api
+          image: frontend-api-image
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      
